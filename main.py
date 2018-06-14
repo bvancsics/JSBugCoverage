@@ -16,6 +16,4 @@ myGit.git_chechout(param_dict["hash"], str(fixed_patch_file))
 
 myJS.npm_install()
 myJS.get_tests()
-myJS.pertestJS_modify("/work/pertest.js", param_dict["command"])
-myJS.perTest_run()
-myJS.pertestJS_reset("/work/pertest.js", param_dict["command"])
+myJS.perTest_run(param_dict["command"])
