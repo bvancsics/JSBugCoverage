@@ -11,7 +11,7 @@ fixed_patch_file = os.path.abspath(param_dict["patchFolder"]+"/"+param_dict["has
 myGit.git_clone(param_dict["repo"], param_dict["folder"])
 
 
-myGit.git_chechout(param_dict["hash"], str(fixed_patch_file))
+myGit.git_chechout(param_dict["hash"], param_dict["include"], str(fixed_patch_file))
 
 
 myJS.npm_install()

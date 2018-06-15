@@ -15,9 +15,9 @@ def git_clone(project_repo, folder):
     os.chdir( os.listdir( "./" )[0] )
 
 
-def git_chechout(hash, fixed_patch_file):
+def git_chechout(hash, include, fixed_patch_file):
     checkout_cmd = "git checkout "+str(hash)+"^1"
     sp.call(checkout_cmd, shell=True)
 
-    apply_cmd = "git apply "+str(fixed_patch_file)+".patch"
+    apply_cmd = "git apply "+str(fixed_patch_file)+".patch --include="+str(include)
     sp.call(apply_cmd, shell=True)

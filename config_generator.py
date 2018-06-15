@@ -26,10 +26,10 @@ def check_fixed_folder_exist(fixed):
 
 
 def get_attributes_from_data_csv(line):
-    return line.split(";")[0], line.split(";")[1], line.split(";")[2]
+    return line.split(";")[0], line.split(";")[1], line.split(";")[2], line.split(";")[3]
 
 
-def config_writer(repo, commit_hash, cmd, folder, patchFolder):
+def config_writer(repo, commit_hash, cmd, include, folder, patchFolder):
     o_file=("CONFIG_"+str(commit_hash))
     F=open(o_file, "w")
     F.write("repo="+str(repo)+"\n")
@@ -37,6 +37,7 @@ def config_writer(repo, commit_hash, cmd, folder, patchFolder):
     F.write("folder="+str(folder)+"/"+str(commit_hash)+"\n")
     F.write("patchFolder="+str(patchFolder)+"\n")
     F.write("command="+str(cmd)+"\n")
+    F.write("include="+str(include))
     F.close()
 
 
@@ -46,8 +47,8 @@ def data_csv_reader(param_dict):
 
     for x in range(1, len(lines)):
         line = lines[x].split("\n")[0]
-        repo, commit_hash, cmd = get_attributes_from_data_csv(line)
-        config_writer(repo, commit_hash, cmd, param_dict["folder"], param_dict["patchFolder"])
+        repo, commit_hash, cmd, include = get_attributes_from_data_csv(line)
+        config_writer(repo, commit_hash, cmd, include, param_dict["folder"], param_dict["patchFolder"])
         run_cmd = "python3 main.py -cF "+"CONFIG_"+str(commit_hash)
         sp.call(run_cmd, shell=True)
     F.close()
