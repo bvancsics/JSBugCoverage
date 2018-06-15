@@ -9,11 +9,9 @@ param_dict = argumentum_parser.arg_parser()
 fixed_patch_file = os.path.abspath(param_dict["patchFolder"]+"/"+param_dict["hash"])
 
 myGit.git_clone(param_dict["repo"], param_dict["folder"])
+myGit.git_chechout(param_dict["hash"], param_dict["include"], param_dict["command"], str(fixed_patch_file))
 
+# TODO: Is there differences between befor.json and after.json?
 
-myGit.git_chechout(param_dict["hash"], param_dict["include"], str(fixed_patch_file))
-
-
-myJS.npm_install()
 myJS.get_tests()
 myJS.perTest_run(param_dict["command"])

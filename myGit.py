@@ -1,3 +1,4 @@
+import myJS
 import os
 import shutil
 import subprocess as sp
@@ -15,9 +16,13 @@ def git_clone(project_repo, folder):
     os.chdir( os.listdir( "./" )[0] )
 
 
-def git_chechout(hash, include, fixed_patch_file):
+def git_chechout(hash, include, command, fixed_patch_file):
     checkout_cmd = "git checkout "+str(hash)+"^1"
     sp.call(checkout_cmd, shell=True)
+    myJS.npm_install()
+    myJS.get_cov_json(command, "../before.json")
 
     apply_cmd = "git apply --include=\""+str(include)+"\" "+str(fixed_patch_file)+".patch"
     sp.call(apply_cmd, shell=True)
+    myJS.npm_install()
+    myJS.get_cov_json(command, "../after.json")
