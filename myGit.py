@@ -19,5 +19,5 @@ def git_chechout(hash, include, fixed_patch_file):
     checkout_cmd = "git checkout "+str(hash)+"^1"
     sp.call(checkout_cmd, shell=True)
 
-    apply_cmd = "git apply "+str(fixed_patch_file)+".patch --include="+str(include)
+    apply_cmd = "git apply --include=\""+str(include)+"\" "+str(fixed_patch_file)+".patch"
     sp.call(apply_cmd, shell=True)
