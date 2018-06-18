@@ -17,8 +17,9 @@ def arg_parser():
     parser.add_argument('-f', '--folder', required = True, help = 'clone/checkout folder')
     parser.add_argument('-H', '--hash', required = True, help = 'fix hash')
     parser.add_argument('-c', '--command', required = True, help = 'coverage command')
-    parser.add_argument('-i', '--include', required = True, help = 'include regex')
+    parser.add_argument('-i', '--include', required = True, help = 'include (test)regex')
     parser.add_argument('-pF', '--patchFolder', required = True, help = 'fixed patches folder')
+    parser.add_argument('-oC', '--only-checkout', default=False, help = 'only checkout buggy version')
 
 
 
@@ -30,6 +31,7 @@ def arg_parser():
     param_dict["command"] = args.command
     param_dict["include"] = args.include
     param_dict["patchFolder"] = args.patchFolder
+    param_dict["only-checkout"] = args.only_checkout
 
     check_fixed_folder_exist(param_dict["patchFolder"])
 

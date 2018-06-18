@@ -11,7 +11,8 @@ fixed_patch_file = os.path.abspath(param_dict["patchFolder"]+"/"+param_dict["has
 
 
 myGit.git_clone(param_dict["repo"], param_dict["folder"])
-myGit.git_chechout(param_dict["hash"], param_dict["include"], param_dict["command"], str(fixed_patch_file))
+myGit.git_chechout(param_dict["hash"], param_dict["include"], param_dict["command"],
+                   param_dict["only-checkout"], str(fixed_patch_file))
 
 
 if other.diff_between_jsons():

@@ -16,9 +16,13 @@ def git_clone(project_repo, folder):
     os.chdir( os.listdir( "./" )[0] )
 
 
-def git_chechout(hash, include, command, fixed_patch_file):
+def git_chechout(hash, include, command, only_checkout, fixed_patch_file):
     checkout_cmd = "git checkout "+str(hash)+"^1"
     sp.call(checkout_cmd, shell=True)
+
+    if bool(only_checkout):
+        exit()
+
     myJS.npm_install()
     myJS.get_cov_json(command, "../before.json")
 
