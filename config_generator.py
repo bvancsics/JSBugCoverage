@@ -8,7 +8,7 @@ def arg_parser():
     parser.add_argument('-d', '--data', required = True, help = 'data csv file')
     parser.add_argument('-f', '--folder', required = True, help = 'clone/checkout folder')
     parser.add_argument('-pF', '--patchFolder', required = True, help = 'fixed patches folder')
-    parser.add_argument('-oC', '--only-checkout', default=False, help = 'only checkout buggy version')
+    parser.add_argument('-oC', '--only-checkout', action='store_true', help = 'only checkout buggy version')
 
     param_dict = {}
     args  = parser.parse_args()

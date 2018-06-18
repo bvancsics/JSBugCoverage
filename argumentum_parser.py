@@ -19,7 +19,7 @@ def arg_parser():
     parser.add_argument('-c', '--command', required = True, help = 'coverage command')
     parser.add_argument('-i', '--include', required = True, help = 'include (test)regex')
     parser.add_argument('-pF', '--patchFolder', required = True, help = 'fixed patches folder')
-    parser.add_argument('-oC', '--only-checkout', default=False, help = 'only checkout buggy version')
+    parser.add_argument('-oC', '--only-checkout', action='store_true', help = 'only checkout buggy version')
 
 
 

@@ -4,7 +4,16 @@ import myJS
 import os
 import other
 
-# python3 main.py -r "https://github.com/expressjs/express" -f ./ProbaCheckout -H "2e1284beb6210444932d050b9d31d3908afb7591" -c "nyc --reporter json ./node_modules/.bin/mocha " -pF "./ExpressPatches"
+"""
+python3 main.py
+    -r "https://github.com/expressjs/express"
+    -f ./ProbaCheckout
+    -H "2e1284beb6210444932d050b9d31d3908afb7591"
+    -c "nyc --reporter json ./node_modules/.bin/mocha "
+    -pF ./ExpressPatches
+    -i "test/*"
+"""
+
 
 param_dict = argumentum_parser.arg_parser()
 fixed_patch_file = os.path.abspath(param_dict["patchFolder"]+"/"+param_dict["hash"])

@@ -20,7 +20,7 @@ def git_chechout(hash, include, command, only_checkout, fixed_patch_file):
     checkout_cmd = "git checkout "+str(hash)+"^1"
     sp.call(checkout_cmd, shell=True)
 
-    if bool(only_checkout):
+    if only_checkout=="True":
         exit()
 
     myJS.npm_install()
