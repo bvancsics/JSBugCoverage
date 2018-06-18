@@ -50,10 +50,15 @@ def data_csv_reader(param_dict):
 
     for x in range(1, len(lines)):
         line = lines[x].split("\n")[0]
-        repo, commit_hash, cmd, include = get_attributes_from_data_csv(line)
-        config_writer(repo, commit_hash, cmd, include, param_dict["folder"], param_dict["patchFolder"], param_dict["only-checkout"])
-        run_cmd = "python3 main.py -cF "+"CONFIG_"+str(commit_hash)
-        sp.call(run_cmd, shell=True)
+
+        if line.startswith("#"):
+            # Ignore lines that start with #
+            pass
+        else:
+            repo, commit_hash, cmd, include = get_attributes_from_data_csv(line)
+            config_writer(repo, commit_hash, cmd, include, param_dict["folder"], param_dict["patchFolder"], param_dict["only-checkout"])
+            run_cmd = "python3 main.py -cF "+"CONFIG_"+str(commit_hash)
+            sp.call(run_cmd, shell=True)
     F.close()
 
 
