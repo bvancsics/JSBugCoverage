@@ -7,7 +7,7 @@ def npm_install():
 
 
 def get_tests():
-    test_cmd = "/work/tests.js ./test > tests.json"
+    test_cmd = "/work/tests.js ./test > ./tests.json"
     sp.call(test_cmd, shell=True)
 
 

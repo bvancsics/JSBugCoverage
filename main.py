@@ -25,5 +25,9 @@ myGit.git_chechout(param_dict["hash"], param_dict["include"], param_dict["comman
 
 
 if other.diff_between_jsons():
+    failed_test_names = other.get_failed_test()
     myJS.get_tests()
+    other.test_filtering(failed_test_names)
+
+
     myJS.perTest_run(param_dict["command"])
