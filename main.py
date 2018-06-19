@@ -15,6 +15,7 @@ python3 main.py
 """
 
 
+
 param_dict = argumentum_parser.arg_parser()
 fixed_patch_file = os.path.abspath(param_dict["patchFolder"]+"/"+param_dict["hash"])
 
@@ -25,9 +26,8 @@ myGit.git_chechout(param_dict["hash"], param_dict["include"], param_dict["comman
 
 
 if other.diff_between_jsons():
-    failed_test_names = other.get_failed_test()
     myJS.get_tests()
-    other.test_filtering(failed_test_names)
 
+    other.failed_test_filtering( other.get_failed_test() )
 
     myJS.perTest_run(param_dict["command"])
