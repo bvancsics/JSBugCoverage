@@ -52,3 +52,13 @@ def get_number_of_methods():
     for js_file in file_data:
         number_of_methods += len(file_data[js_file]["fnMap"])
     return number_of_methods
+
+
+def get_coverage_summary():
+    coverages={}
+    coverage_data = json.load( open('./coverage/coverage-summary.json') )
+    coverages["lines"] = coverage_data["total"]["lines"]["pct"]
+    coverages["statements"] = coverage_data["total"]["statements"]["pct"]
+    coverages["functions"] = coverage_data["total"]["functions"]["pct"]
+    coverages["branches"] = coverage_data["total"]["branches"]["pct"]
+    return coverages

@@ -31,7 +31,13 @@ if other.diff_between_jsons():
 
     myJS.perTest_run(param_dict["command"])
 
-    number_of_tests = other.get_number_of_tests()
-    number_of_methods = other.get_number_of_methods()
-    #print(number_of_methods, number_of_tests)
+    number_of_tests     = other.get_number_of_tests()
+    number_of_methods   = other.get_number_of_methods()
+    coverage_summary    = other.get_coverage_summary()
+    """
+    print(number_of_methods, number_of_tests)
+    for cov_type, cov_pct in coverage_summary.items():
+        print(cov_type, cov_pct)
+    """
+
 

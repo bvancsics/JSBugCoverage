@@ -1,2 +1,2 @@
 Repo;Hash;Command;Include
-https://github.com/expressjs/express;2e1284beb6210444932d050b9d31d3908afb7591;istanbul cover node_modules/.bin/_mocha -- --require test/support/env --reporter json --check-leaks --no-exit test/;test/*
+https://github.com/expressjs/express;2e1284beb6210444932d050b9d31d3908afb7591;istanbul cover --report json-summary node_modules/.bin/_mocha -- --require test/support/env --reporter json --check-leaks test/;test/*
