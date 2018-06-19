@@ -20,7 +20,7 @@ def git_chechout(hash, include, command, only_checkout, fixed_patch_file):
     checkout_cmd = "git checkout "+str(hash)+"^1"
     sp.call(checkout_cmd, shell=True)
 
-    if only_checkout=="True":
+    if only_checkout == "True":
         exit()
 
     myJS.npm_install()
@@ -28,5 +28,6 @@ def git_chechout(hash, include, command, only_checkout, fixed_patch_file):
 
     apply_cmd = "git apply --include=\""+str(include)+"\" "+str(fixed_patch_file)+".patch"
     sp.call(apply_cmd, shell=True)
+
     myJS.npm_install()
     myJS.get_cov_json(command, "../after.json")

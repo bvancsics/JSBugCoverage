@@ -15,7 +15,6 @@ python3 main.py
 """
 
 
-
 param_dict = argumentum_parser.arg_parser()
 fixed_patch_file = os.path.abspath(param_dict["patchFolder"]+"/"+param_dict["hash"])
 
@@ -31,3 +30,8 @@ if other.diff_between_jsons():
     other.failed_test_filtering( other.get_failed_test() )
 
     myJS.perTest_run(param_dict["command"])
+
+    number_of_tests = other.get_number_of_tests()
+    number_of_methods = other.get_number_of_methods()
+    #print(number_of_methods, number_of_tests)
+

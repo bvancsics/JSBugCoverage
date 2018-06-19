@@ -39,3 +39,16 @@ def _search(failed_test_names, line):
         if new_line.count( "\""+failed_test.replace(" ",".").replace("\"","\\\"")+"\"," ):
             return True
     return False
+
+
+def get_number_of_tests():
+    F = open("./tests.json", "r")
+    return len(F.readlines())-2
+
+
+def get_number_of_methods():
+    number_of_methods = 0
+    file_data = json.load( open('./coverage/coverage.json') )
+    for js_file in file_data:
+        number_of_methods += len(file_data[js_file]["fnMap"])
+    return number_of_methods
