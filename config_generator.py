@@ -2,6 +2,13 @@ import argparse
 import subprocess as sp
 import os
 
+"""
+python3 config_generator.py
+    -d ./data.csv
+    -f ./CheckoutFolder
+    -pF ./ExpressPatches/
+"""
+
 def arg_parser():
 
     parser = argparse.ArgumentParser(description = 'ide jon valami')

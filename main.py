@@ -7,7 +7,7 @@ import other
 """
 python3 main.py
     -r "https://github.com/expressjs/express"
-    -f ./ProbaCheckout
+    -f ./CheckoutFolder
     -H "2e1284beb6210444932d050b9d31d3908afb7591"
     -c "nyc --reporter json ./node_modules/.bin/mocha "
     -pF ./ExpressPatches
