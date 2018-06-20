@@ -25,6 +25,8 @@ myGit.git_clone(param_dict["repo"], param_dict["folder"])
 myGit.git_chechout(param_dict["hash"], param_dict["include"], param_dict["command"],
                    param_dict["only-checkout"], str(fixed_patch_file))
 
+myJS.get_test_results()
+
 
 if other.diff_between_jsons():
     myJS.get_tests(param_dict["tests"])

@@ -11,6 +11,11 @@ def get_tests(tests_folder):
     sp.call(test_cmd, shell=True)
 
 
+def get_test_results():
+    sp.call("/work/results.js -t ../before.json -r ./before_results.txt", shell=True)
+    sp.call("/work/results.js -t ../after.json -r ./after_results.txt", shell=True)
+
+
 def test_run(per_test_coverage, coverage_command):
     if per_test_coverage == "True":
         perTest_run(coverage_command)
@@ -19,7 +24,7 @@ def test_run(per_test_coverage, coverage_command):
 
 
 def perTest_run(coverage_command):
-    perTest_cmd = "/work/pertest.js -t ./tests.json -r results.txt -c \""+str(coverage_command)+"\""
+    perTest_cmd = "/work/pertest.js -t ./tests.json -r perTest_results.txt -c \""+str(coverage_command)+"\""
     sp.call(perTest_cmd, shell=True)
 
 
