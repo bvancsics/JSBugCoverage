@@ -21,6 +21,7 @@ def arg_parser():
     parser.add_argument('-i', '--include', required = True, help = 'include (test)regex')
     parser.add_argument('-pF', '--patchFolder', required = True, help = 'fixed patches folder')
     parser.add_argument('-oC', '--only-checkout', action='store_true', help = 'only checkout buggy version')
+    parser.add_argument('-pTC', '--per-test-coverage', action='store_true', default=False, help = 'run per-test coverage')
 
 
 
@@ -34,6 +35,7 @@ def arg_parser():
     param_dict["include"] = args.include
     param_dict["patchFolder"] = args.patchFolder
     param_dict["only-checkout"] = args.only_checkout
+    param_dict["per-test-coverage"] = args.per_test_coverage
 
     check_fixed_folder_exist(param_dict["patchFolder"])
 

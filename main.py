@@ -13,6 +13,7 @@ python3 main.py
     -pF ./ExpressPatches
     -t test/ test/acceptance/
     -i "test/*"
+    --per-test-coverage
 """
 
 
@@ -30,15 +31,14 @@ if other.diff_between_jsons():
 
     other.failed_test_filtering( other.get_failed_test() )
 
-    myJS.perTest_run(param_dict["command"])
+    myJS.test_run(param_dict["per-test-coverage"], param_dict["command"])
+
 
     number_of_tests     = other.get_number_of_tests()
     number_of_methods   = other.get_number_of_methods()
     coverage_summary    = other.get_coverage_summary()
-    """
+
     print(number_of_methods, number_of_tests)
     for cov_type, cov_pct in coverage_summary.items():
         print(cov_type, cov_pct)
-    """
-
 

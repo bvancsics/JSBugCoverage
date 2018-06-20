@@ -11,9 +11,20 @@ def get_tests(tests_folder):
     sp.call(test_cmd, shell=True)
 
 
+def test_run(per_test_coverage, coverage_command):
+    if per_test_coverage == "True":
+        perTest_run(coverage_command)
+    else:
+        allTest_run(coverage_command)
+
+
 def perTest_run(coverage_command):
     perTest_cmd = "/work/pertest.js -t ./tests.json -r results.txt -c \""+str(coverage_command)+"\""
     sp.call(perTest_cmd, shell=True)
+
+
+def allTest_run(coverage_command):
+    sp.call(coverage_command, shell=True)
 
 
 def get_cov_json(coverage_command, json_name):
