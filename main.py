@@ -11,6 +11,7 @@ python3 main.py
     -H "2e1284beb6210444932d050b9d31d3908afb7591"
     -c "nyc --reporter json ./node_modules/.bin/mocha "
     -pF ./ExpressPatches
+    -t test/ test/acceptance/
     -i "test/*"
 """
 
@@ -25,7 +26,7 @@ myGit.git_chechout(param_dict["hash"], param_dict["include"], param_dict["comman
 
 
 if other.diff_between_jsons():
-    myJS.get_tests()
+    myJS.get_tests(param_dict["tests"])
 
     other.failed_test_filtering( other.get_failed_test() )
 
