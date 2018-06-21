@@ -5,8 +5,14 @@ from os import fdopen, remove
 
 
 def diff_between_jsons():
-    befor_data = json.load( open('../before.json') )
-    after_data = json.load( open('../after.json') )
+    befor_data = None
+    after_data = None
+    try:
+        befor_data = json.load( open('../before.json') )
+        after_data = json.load( open('../after.json') )
+    except:
+        print(" Before.json and/or after.json parser error!")
+        exit()
 
     if int(befor_data["stats"]["failures"]) < int(after_data["stats"]["failures"]):
         return True
@@ -15,7 +21,7 @@ def diff_between_jsons():
 
 def get_failed_test():
     failed_test_names = set()
-    befor_data = json.load( open('../before.json') )
+    befor_data = json.load( open('../before.json', encoding="utf-8") )
     for failed_test in befor_data["failures"]:
         failed_test_names.add( str(failed_test["fullTitle"].replace(" ", ".")) )
     return failed_test_names
@@ -42,8 +48,8 @@ def _search(failed_test_names, line):
 
 
 def get_number_of_tests():
-    F = open("./tests.json", "r")
-    return len(F.readlines())-2
+    after_data = json.load( open('../after.json', encoding="utf-8") )
+    return int(after_data["stats"]["tests"])
 
 
 def get_number_of_methods():

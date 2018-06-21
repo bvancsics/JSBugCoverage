@@ -39,5 +39,5 @@ def get_cov_json(coverage_command, json_name):
 
 
 def cut_command(coverage_command):
-    return coverage_command.replace("istanbul cover --report json-summary ", "").replace(" -- ", " ").replace(" --no-exit ", " ")
-
+    tmp = coverage_command.split(" node_modules/")[1]
+    return "node_modules/"+str(tmp).replace(" -- ", " ")
