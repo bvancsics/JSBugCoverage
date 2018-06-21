@@ -40,7 +40,9 @@ if other.diff_between_jsons():
     number_of_methods   = other.get_number_of_methods()
     coverage_summary    = other.get_coverage_summary()
 
-    print(number_of_methods, number_of_tests)
+    print("Number of methods: "+str(number_of_methods))
+    print("Number of tests: "+str(number_of_tests))
+    print("Coverage (%):")
     for cov_type, cov_pct in coverage_summary.items():
-        print(cov_type, cov_pct)
-
+        print("\t"+str(cov_type)+" - "+str(cov_pct))
+    print("-----------------------------\n")
