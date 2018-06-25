@@ -60,7 +60,6 @@ def get_checkout_fixed_arguments():
     parser.add_argument('-r',   '--repo',           required = True, help = 'project repo')
     parser.add_argument('-f',   '--folder',         required = True, help = 'clone/checkout folder')
     parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
-    parser.add_argument('-pF',  '--patchFolder',    required = True, help = 'fixed patches folder')
 
     param_dict = {}
     args = parser.parse_args()
