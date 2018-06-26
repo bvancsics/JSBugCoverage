@@ -69,12 +69,15 @@ def is_test(param_dict, test_results_command_types):
 
 def test(param_dict):
     if "buggy-results" in param_dict.keys():
-        buggy_test_results(param_dict["repo"], param_dict["folder"], param_dict["hash"], param_dict["command"])
+        buggy_test_results(param_dict["repo"], param_dict["folder"], param_dict["hash"], param_dict["test-command"])
     elif "fixed-results" in param_dict.keys():
-        fixed_test_results(param_dict["repo"], param_dict["folder"], param_dict["hash"], param_dict["command"])
+        fixed_test_results(param_dict["repo"], param_dict["folder"], param_dict["hash"], param_dict["test-command"])
     elif "fixed-only-test-change-results" in param_dict.keys():
         fixed_only_test_change_results(param_dict["repo"], param_dict["folder"], param_dict["hash"],
-                                       param_dict["command"], param_dict["include"], param_dict["patchFolder"])
+                                       param_dict["test-command"], param_dict["include"], param_dict["patchFolder"])
+
+    myJS.test_run(param_dict["per-test-coverage"], param_dict["per-test-coverage-command"], param_dict["test-folders"])
+
 
 def buggy_test_results(repo, folder, fixed_hash, test_command):
     checkout_buggy_version(repo, folder, fixed_hash)
