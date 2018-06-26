@@ -105,7 +105,7 @@ def get_buggy_test_arguments():
     parser.add_argument('-pTC', '--per-test-coverage', action='store_true', default=False, help = 'run per-test coverage')
     parser.add_argument('-pTCC','--per-test-coverage-command', default="None", help = '(istanbul) per-test coverage command')
     parser.add_argument('-tF',  '--test-folders', default="None", help = 'test folder(s)')
-
+    parser.add_argument('-pCF',  '--pre-command', default="None", help = 'required pre-command')
 
     param_dict = {}
     args = parser.parse_args()
@@ -118,6 +118,7 @@ def get_buggy_test_arguments():
     param_dict["per-test-coverage"] = args.per_test_coverage
     param_dict["per-test-coverage-command"] = args.per_test_coverage_command
     param_dict["test-folders"] = args.test_folders
+    param_dict["pre-command"] = args.pre_command
 
     return param_dict
 
