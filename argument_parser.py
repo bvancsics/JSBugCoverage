@@ -82,7 +82,7 @@ def get_checkout_fixed_only_test_arguments():
 
     param_dict = {}
     args = parser.parse_args()
-    param_dict["checkout-fixed-version"] = args.checkout_fixed_version
+    param_dict["checkout-fixed-only-test-change"] = args.checkout_fixed_only_test_change
     param_dict["folder"] = args.folder
     param_dict["hash"] = args.hash
     param_dict["repo"] = args.repo
