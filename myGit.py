@@ -116,11 +116,12 @@ def compare_test_results(repo, folder, fixed_hash, test_command, include, patchF
     checkout_buggy_version(repo, folder, fixed_hash)
     myJS.npm_install()
     myTest.get_test_json(test_command, "../buggy-results.json")
-    myTest.get_test_stat("../buggy-results.json")
+    buggy_test_stat = myTest.get_test_stat("../buggy-results.json")
+
 
     patch_apply(patchFolder, fixed_hash, include)
     myJS.npm_install()
     myTest.get_test_json(test_command, "../fixed-results.json")
-    myTest.get_test_stat("../fixed-results.json")
+    fixed_test_stat = myTest.get_test_stat("../fixed-results.json")
 
-    myTest.results_comapre("../buggy-results.json", "../fixed-results.json")
+    myTest.results_comapre(buggy_test_stat, fixed_test_stat)
