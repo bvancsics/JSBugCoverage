@@ -30,4 +30,5 @@ def allTest_run(coverage_command):
 
 
 def precommand_run(precommand):
-    sp.call(precommand, shell=True)
+    if len(precommand) > 0:
+        sp.call(precommand, shell=True)

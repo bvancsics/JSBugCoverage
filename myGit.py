@@ -76,7 +76,7 @@ def test(param_dict):
         fixed_only_test_change_results(param_dict["repo"], param_dict["folder"], param_dict["hash"],
                                        param_dict["test-command"], param_dict["include"], param_dict["patchFolder"])
 
-    myJS.test_run(param_dict["per-test-coverage"], param_dict["per-test-coverage-command"], param_dict["test-folders"], param_dict["pre-command"])
+    myJS.test_run(param_dict["per-test-coverage"], param_dict["coverage-command"], param_dict["test-folders"], param_dict["pre-command"])
 
 
 def buggy_test_results(repo, folder, fixed_hash, test_command):

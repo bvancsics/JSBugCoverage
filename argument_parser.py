@@ -103,9 +103,10 @@ def get_buggy_test_arguments():
     parser.add_argument('-tC',  '--test-command',   required = True, help = 'test command')
 
     parser.add_argument('-pTC', '--per-test-coverage', action='store_true', default=False, help = 'run per-test coverage')
-    parser.add_argument('-pTCC','--per-test-coverage-command', default="None", help = '(istanbul) per-test coverage command')
+    parser.add_argument('-CC',  '--coverage-command', default="None", help = '(istanbul) coverage command')
     parser.add_argument('-tF',  '--test-folders', default="None", help = 'test folder(s)')
-    parser.add_argument('-pCF',  '--pre-command', default="None", help = 'required pre-command')
+    parser.add_argument('-pC',  '--pre-command', default="None", help = 'required pre-command')
+    parser.add_argument('-tF',  '--test-folders',   required = True, help = 'test folder(s)')
 
     param_dict = {}
     args = parser.parse_args()
@@ -116,8 +117,7 @@ def get_buggy_test_arguments():
     param_dict["test-command"] = args.test_command
 
     param_dict["per-test-coverage"] = args.per_test_coverage
-    param_dict["per-test-coverage-command"] = args.per_test_coverage_command
-    param_dict["test-folders"] = args.test_folders
+    param_dict["coverage-command"] = args.coverage_command
     param_dict["pre-command"] = args.pre_command
 
     return param_dict
@@ -131,10 +131,11 @@ def get_fixed_test_arguments():
     parser.add_argument('-f',   '--folder',         required = True, help = 'clone/checkout folder')
     parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
     parser.add_argument('-tC',  '--test-command',   required = True, help = 'test command')
+    parser.add_argument('-tF',  '--test-folders',   required = True, help = 'test folder(s)')
 
     parser.add_argument('-pTC', '--per-test-coverage', action='store_true', default=False, help = 'run per-test coverage')
-    parser.add_argument('-pTCC','--per-test-coverage-command', default="None", help = '(istanbul) per-test coverage command')
-    parser.add_argument('-tF',  '--test-folders', default="None", help = 'test folder(s)')
+    parser.add_argument('-CC',  '--coverage-command', default="None", help = '(istanbul) coverage command')
+    parser.add_argument('-pC',  '--pre-command', default="None", help = 'required pre-command')
 
 
     param_dict = {}
@@ -146,8 +147,9 @@ def get_fixed_test_arguments():
     param_dict["test-command"] = args.test_command
 
     param_dict["per-test-coverage"] = args.per_test_coverage
-    param_dict["per-test-coverage-command"] = args.per_test_coverage_command
+    param_dict["coverage-command"] = args.coverage_command
     param_dict["test-folders"] = args.test_folders
+    param_dict["pre-command"] = args.pre_command
 
     return param_dict
 
@@ -161,10 +163,11 @@ def get_fixed_only_test_change_test_arguments():
     parser.add_argument('-tC',  '--test-command',   required = True, help = 'test command')
     parser.add_argument('-i',   '--include',        required = True, help = 'include (test)regex')
     parser.add_argument('-pF',  '--patchFolder',    required = True, help = 'fixed patches folder')
+    parser.add_argument('-tF',  '--test-folders',   required = True, help = 'test folder(s)')
 
     parser.add_argument('-pTC', '--per-test-coverage', action='store_true', default=False, help = 'run per-test coverage')
-    parser.add_argument('-pTCC','--per-test-coverage-command', default="None", help = '(istanbul) per-test coverage command')
-    parser.add_argument('-tF',  '--test-folders', default="None", help = 'test folder(s)')
+    parser.add_argument('-CC',  '--coverage-command', default="None", help = '(istanbul) coverage command')
+    parser.add_argument('-pC',  '--pre-command', default="None", help = 'required pre-command')
 
     param_dict = {}
     args = parser.parse_args()
@@ -177,8 +180,9 @@ def get_fixed_only_test_change_test_arguments():
     param_dict["patchFolder"] = args.patchFolder
 
     param_dict["per-test-coverage"] = args.per_test_coverage
-    param_dict["per-test-coverage-command"] = args.per_test_coverage_command
+    param_dict["coverage-command"] = args.coverage_command
     param_dict["test-folders"] = args.test_folders
+    param_dict["pre-command"] = args.pre_command
 
     return param_dict
 
@@ -192,7 +196,7 @@ def get_compare_arguments():
     parser.add_argument('-r',   '--repo',           required = True, help = 'project repo')
     parser.add_argument('-f',   '--folder',         required = True, help = 'clone/checkout folder')
     parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
-    parser.add_argument('-c',   '--command',        required = True, help = 'test command')
+    parser.add_argument('-tC',  '--test-command',   required = True, help = 'test command')
     parser.add_argument('-i',   '--include',        required = True, help = 'include (test)regex')
     parser.add_argument('-pF',  '--patchFolder',    required = True, help = 'fixed patches folder')
 
@@ -202,7 +206,7 @@ def get_compare_arguments():
     param_dict["folder"] = args.folder
     param_dict["hash"] = args.hash
     param_dict["repo"] = args.repo
-    param_dict["command"] = args.command
+    param_dict["test-command"] = args.test_command
     param_dict["include"] = args.include
     param_dict["patchFolder"] = args.patchFolder
 
