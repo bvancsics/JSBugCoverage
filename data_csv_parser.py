@@ -88,7 +88,7 @@ def do_command(param_dict, cmd_param_dict):
             cmd += " --per-test-coverage "+\
                    " -pC "+cmd_param_dict["pre-command"]
     elif param_dict["task"] in ["cmp", "compare-buggy-and-fixed-results"]:
-        cmd = "-cFOTC -r "+cmd_param_dict["repo"]+" -f "+cmd_param_dict["folder"]+" -H "+cmd_param_dict["hash"]+\
+        cmd = "-cmp -r "+cmd_param_dict["repo"]+" -f "+cmd_param_dict["folder"]+" -H "+cmd_param_dict["hash"]+\
               " -tC "+cmd_param_dict["test-command"]+" -i "+cmd_param_dict["include"]+" -pF "+cmd_param_dict["patchFolder"]
 
     return cmd

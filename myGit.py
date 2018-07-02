@@ -112,7 +112,7 @@ def is_compare(param_dict, compare_results_command_types):
 def compare(param_dict):
     if "compare-buggy-and-fixed-results" in param_dict.keys():
         compare_test_results(param_dict["repo"], param_dict["folder"], param_dict["hash"],
-                             param_dict["command"], param_dict["include"], param_dict["patchFolder"])
+                             param_dict["test-command"], param_dict["include"], param_dict["patchFolder"])
 
 
 def compare_test_results(repo, folder, fixed_hash, test_command, include, patchFolder):
