@@ -1,7 +1,6 @@
 import myTest
 import myJS
 import os
-import shutil
 import subprocess as sp
 
 
@@ -129,3 +128,26 @@ def compare_test_results(repo, folder, fixed_hash, test_command, include, patchF
     fixed_test_stat = myTest.get_test_stat("../fixed-results.json")
 
     myTest.results_comapre(buggy_test_stat, fixed_test_stat)
+
+
+# ************ info **************
+
+
+def is_info(param_dict, info_command_types):
+    for info_command in info_command_types:
+        if info_command in param_dict.keys():
+            return True
+    return False
+
+
+def info(param_dict):
+    if "info" in param_dict.keys():
+        get_info(param_dict["bug-ID"], param_dict["repo"], param_dict["hash"])
+
+
+def get_info(ID, repo, commit_hash):
+    print("Bug ID:\t\t"+str(ID))
+    print("Repository:\t"+str(repo))
+    print("Commit hash:\t"+str(commit_hash))
+    commit_link = str(repo).replace(".git", "")+str("/commit/"+str(commit_hash))
+    print("Commit link:\t"+str(commit_link))

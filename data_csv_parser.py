@@ -13,7 +13,8 @@ def arg_parser():
                                  "buggy-results",
                                  "fixed-results",
                                  "fixed-only-test-change-results",
-                                 "compare-buggy-and-fixed-results"], help = 'task')
+                                 "compare-buggy-and-fixed-results",
+                                 "info"], help = 'task')
     parser.add_argument('--per-test-coverage', action='store_true', default=False, help = 'run per-test coverage')
 
     param_dict = {}
@@ -26,15 +27,16 @@ def arg_parser():
 
 def get_attributes_from_data_csv(line):
     cmd_param_dict = {}
-    cmd_param_dict["repo"] = line.split(";")[0]
-    cmd_param_dict["folder"] = line.split(";")[1]
-    cmd_param_dict["hash"] = line.split(";")[2]
-    cmd_param_dict["test-command"] = "\""+line.split(";")[3]+"\""
-    cmd_param_dict["coverage-command"] = "\""+line.split(";")[4]+"\""
-    cmd_param_dict["test-folders"] = "\""+line.split(";")[5]+"\""
-    cmd_param_dict["pre-command"] = "\""+line.split(";")[6]+"\""
-    cmd_param_dict["include"] = "\""+line.split(";")[7]+"\""
-    cmd_param_dict["patchFolder"] = line.split(";")[8]
+    cmd_param_dict["bugID"] = line.split(";")[0]
+    cmd_param_dict["repo"] = line.split(";")[1]
+    cmd_param_dict["folder"] = line.split(";")[2]
+    cmd_param_dict["hash"] = line.split(";")[3]
+    cmd_param_dict["test-command"] = "\""+line.split(";")[4]+"\""
+    cmd_param_dict["coverage-command"] = "\""+line.split(";")[5]+"\""
+    cmd_param_dict["test-folders"] = "\""+line.split(";")[6]+"\""
+    cmd_param_dict["pre-command"] = "\""+line.split(";")[7]+"\""
+    cmd_param_dict["include"] = "\""+line.split(";")[8]+"\""
+    cmd_param_dict["patchFolder"] = line.split(";")[9]
     return cmd_param_dict
 
 
@@ -54,6 +56,7 @@ def do_command(param_dict, cmd_param_dict):
               " -H "+cmd_param_dict["hash"]+\
               " -i "+cmd_param_dict["include"]+\
               " -pF "+cmd_param_dict["patchFolder"]
+
     elif param_dict["task"] in ["bR", "buggy-results"]:
         cmd = "-bR -r "+cmd_param_dict["repo"]+\
               " -f "+cmd_param_dict["folder"]+\
@@ -64,7 +67,6 @@ def do_command(param_dict, cmd_param_dict):
         if str(param_dict["per-test-coverage"]) == "True":
             cmd += "--per-test-coverage"+\
                    " -pC "+cmd_param_dict["pre-command"]
-
     elif param_dict["task"] in ["fR", "fixed-results"]:
         cmd = "-fR -r "+cmd_param_dict["repo"]+\
               " -f "+cmd_param_dict["folder"]+\
@@ -87,9 +89,13 @@ def do_command(param_dict, cmd_param_dict):
         if str(param_dict["per-test-coverage"]) == "True":
             cmd += " --per-test-coverage "+\
                    " -pC "+cmd_param_dict["pre-command"]
+
     elif param_dict["task"] in ["cmp", "compare-buggy-and-fixed-results"]:
         cmd = "-cmp -r "+cmd_param_dict["repo"]+" -f "+cmd_param_dict["folder"]+" -H "+cmd_param_dict["hash"]+\
               " -tC "+cmd_param_dict["test-command"]+" -i "+cmd_param_dict["include"]+" -pF "+cmd_param_dict["patchFolder"]
+
+    elif param_dict["task"] in ["I", "info"]:
+        cmd = "-I -b "+str(cmd_param_dict["bugID"])+" -r "+cmd_param_dict["repo"]+" -H "+cmd_param_dict["hash"]
 
     return cmd
 

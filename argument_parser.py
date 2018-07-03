@@ -22,6 +22,9 @@ def arg_parser():
         elif sys.argv[i] == "-cmp" or sys.argv[i] == "--compare-buggy-and-fixed-results":
             return get_compare_arguments()
 
+        elif sys.argv[i] == "-I" or sys.argv[i] == "--info":
+            return get_info_arguments()
+
     print("Options:")
     print("\t-cB or --checkout-buggy-version")
     print("\t-cF or --checkout-fixed-version")
@@ -30,6 +33,7 @@ def arg_parser():
     print("\t-fR or --fixed-results")
     print("\t-fOTCR or --fixed-only-test-change-results")
     print("\t-cmp or --compare-buggy-and-fixed-results")
+    print("\t-I or --info")
     exit()
 
 
@@ -209,5 +213,24 @@ def get_compare_arguments():
     param_dict["test-command"] = args.test_command
     param_dict["include"] = args.include
     param_dict["patchFolder"] = args.patchFolder
+
+    return param_dict
+
+# *********************** compare *************************
+
+def get_info_arguments():
+    parser = argparse.ArgumentParser(description = '   ')
+    parser.add_argument('-I',   '--info', action='store_true', help = '     ')
+
+    parser.add_argument('-b',   '--bug-ID',         required = True, help = 'bug ID')
+    parser.add_argument('-r',   '--repo',           required = True, help = 'project repo')
+    parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
+
+    param_dict = {}
+    args = parser.parse_args()
+    param_dict["info"] = args.info
+    param_dict["bug-ID"] = args.bug_ID
+    param_dict["hash"] = args.hash
+    param_dict["repo"] = args.repo
 
     return param_dict
