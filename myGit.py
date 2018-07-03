@@ -49,9 +49,10 @@ def patch_apply(patchFolder, fixed_hash, include):
 
 def clone_repo(project_repo, folder):
     if os.path.isdir(folder):
-        shutil.rmtree(folder)
-    else:
-        os.makedirs(folder)
+        rm_cmd = "rm -R "+str(folder)
+        sp.call(rm_cmd, shell=True)
+
+    os.makedirs(folder)
 
     os.chdir(folder)
     clone_cmd = "git clone "+str(project_repo)
