@@ -4,7 +4,6 @@ import myGit
 """
 Examples:
 
-python3 main.py -fOTCR -r https://github.com/expressjs/express -f ./ASD-1 -H 12626aed35a6d1ef4466fa0d67613a53db8b1149 -tF "test/ test/acceptance/" -tC "node_modules/.bin/_mocha --require test/support/env --reporter json test/ test/acceptance/" -CC "istanbul cover --report json-summary node_modules/.bin/_mocha -- --require test/support/env --reporter json --check-leaks test/ test/acceptance/" -i test/* -pF /data/MeroScript/expressjs_express/patches
 
 """
 

@@ -45,13 +45,13 @@ def get_checkout_bug_parent_arguments():
 
     parser.add_argument('-r',   '--repo',   required = True, help = 'project repo')
     parser.add_argument('-f',   '--folder', required = True, help = 'clone/checkout folder')
-    parser.add_argument('-H',   '--hash',   required = True, help = 'fix hash')
+    parser.add_argument('-b',   '--bug-ID',         required = True, help = 'bug ID')
 
     param_dict = {}
     args = parser.parse_args()
     param_dict["checkout-buggy-version"] = args.checkout_buggy_version
     param_dict["folder"] = args.folder
-    param_dict["hash"] = args.hash
+    param_dict["bug-ID"] = args.bug_ID
     param_dict["repo"] = args.repo
     return param_dict
 
@@ -63,13 +63,13 @@ def get_checkout_fixed_arguments():
 
     parser.add_argument('-r',   '--repo',           required = True, help = 'project repo')
     parser.add_argument('-f',   '--folder',         required = True, help = 'clone/checkout folder')
-    parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
+    parser.add_argument('-b',   '--bug-ID',         required = True, help = 'bug ID')
 
     param_dict = {}
     args = parser.parse_args()
     param_dict["checkout-fixed-version"] = args.checkout_fixed_version
     param_dict["folder"] = args.folder
-    param_dict["hash"] = args.hash
+    param_dict["bug-ID"] = args.bug_ID
     param_dict["repo"] = args.repo
     return param_dict
 
@@ -80,18 +80,14 @@ def get_checkout_fixed_only_test_arguments():
 
     parser.add_argument('-r',   '--repo',           required = True, help = 'project repo')
     parser.add_argument('-f',   '--folder',         required = True, help = 'clone/checkout folder')
-    parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
-    parser.add_argument('-i',   '--include',        required = True, help = 'include (test)regex')
-    parser.add_argument('-pF',  '--patchFolder',    required = True, help = 'fixed patches folder')
+    parser.add_argument('-b',   '--bug-ID',         required = True, help = 'bug ID')
 
     param_dict = {}
     args = parser.parse_args()
     param_dict["checkout-fixed-only-test-change"] = args.checkout_fixed_only_test_change
     param_dict["folder"] = args.folder
-    param_dict["hash"] = args.hash
+    param_dict["bug-ID"] = args.bug_ID
     param_dict["repo"] = args.repo
-    param_dict["include"] = args.include
-    param_dict["patchFolder"] = args.patchFolder
     return param_dict
 
 
@@ -103,22 +99,22 @@ def get_buggy_test_arguments():
 
     parser.add_argument('-r',   '--repo',           required = True, help = 'project repo')
     parser.add_argument('-f',   '--folder',         required = True, help = 'clone/checkout folder')
-    parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
+    parser.add_argument('-b',   '--bug-ID',         required = True, help = 'bug ID')
     parser.add_argument('-tC',  '--test-command',   required = True, help = 'test command')
+    parser.add_argument('-tF',  '--test-folders',   required = True, help = 'test folder(s)')
 
     parser.add_argument('-pTC', '--per-test-coverage', action='store_true', default=False, help = 'run per-test coverage')
     parser.add_argument('-CC',  '--coverage-command', default="None", help = '(istanbul) coverage command')
-    parser.add_argument('-tF',  '--test-folders', default="None", help = 'test folder(s)')
     parser.add_argument('-pC',  '--pre-command', default="None", help = 'required pre-command')
-    parser.add_argument('-tF',  '--test-folders',   required = True, help = 'test folder(s)')
 
     param_dict = {}
     args = parser.parse_args()
     param_dict["buggy-results"] = args.buggy_results
     param_dict["folder"] = args.folder
-    param_dict["hash"] = args.hash
+    param_dict["bug-ID"] = args.bug_ID
     param_dict["repo"] = args.repo
     param_dict["test-command"] = args.test_command
+    param_dict["test-folders"] = args.test_folders
 
     param_dict["per-test-coverage"] = args.per_test_coverage
     param_dict["coverage-command"] = args.coverage_command
@@ -133,7 +129,7 @@ def get_fixed_test_arguments():
 
     parser.add_argument('-r',   '--repo',           required = True, help = 'project repo')
     parser.add_argument('-f',   '--folder',         required = True, help = 'clone/checkout folder')
-    parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
+    parser.add_argument('-b',   '--bug-ID',         required = True, help = 'bug ID')
     parser.add_argument('-tC',  '--test-command',   required = True, help = 'test command')
     parser.add_argument('-tF',  '--test-folders',   required = True, help = 'test folder(s)')
 
@@ -146,13 +142,13 @@ def get_fixed_test_arguments():
     args = parser.parse_args()
     param_dict["fixed-results"] = args.fixed_results
     param_dict["folder"] = args.folder
-    param_dict["hash"] = args.hash
+    param_dict["bug-ID"] = args.bug_ID
     param_dict["repo"] = args.repo
     param_dict["test-command"] = args.test_command
+    param_dict["test-folders"] = args.test_folders
 
     param_dict["per-test-coverage"] = args.per_test_coverage
     param_dict["coverage-command"] = args.coverage_command
-    param_dict["test-folders"] = args.test_folders
     param_dict["pre-command"] = args.pre_command
 
     return param_dict
@@ -163,10 +159,8 @@ def get_fixed_only_test_change_test_arguments():
 
     parser.add_argument('-r',   '--repo',           required = True, help = 'project repo')
     parser.add_argument('-f',   '--folder',         required = True, help = 'clone/checkout folder')
-    parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
+    parser.add_argument('-b',   '--bug-ID',         required = True, help = 'bug ID')
     parser.add_argument('-tC',  '--test-command',   required = True, help = 'test command')
-    parser.add_argument('-i',   '--include',        required = True, help = 'include (test)regex')
-    parser.add_argument('-pF',  '--patchFolder',    required = True, help = 'fixed patches folder')
     parser.add_argument('-tF',  '--test-folders',   required = True, help = 'test folder(s)')
 
     parser.add_argument('-pTC', '--per-test-coverage', action='store_true', default=False, help = 'run per-test coverage')
@@ -177,11 +171,9 @@ def get_fixed_only_test_change_test_arguments():
     args = parser.parse_args()
     param_dict["fixed-only-test-change-results"] = args.fixed_only_test_change_results
     param_dict["folder"] = args.folder
-    param_dict["hash"] = args.hash
+    param_dict["bug-ID"] = args.bug_ID
     param_dict["repo"] = args.repo
     param_dict["test-command"] = args.test_command
-    param_dict["include"] = args.include
-    param_dict["patchFolder"] = args.patchFolder
 
     param_dict["per-test-coverage"] = args.per_test_coverage
     param_dict["coverage-command"] = args.coverage_command
@@ -199,20 +191,16 @@ def get_compare_arguments():
 
     parser.add_argument('-r',   '--repo',           required = True, help = 'project repo')
     parser.add_argument('-f',   '--folder',         required = True, help = 'clone/checkout folder')
-    parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
+    parser.add_argument('-b',   '--bug-ID',         required = True, help = 'bug ID')
     parser.add_argument('-tC',  '--test-command',   required = True, help = 'test command')
-    parser.add_argument('-i',   '--include',        required = True, help = 'include (test)regex')
-    parser.add_argument('-pF',  '--patchFolder',    required = True, help = 'fixed patches folder')
 
     param_dict = {}
     args = parser.parse_args()
     param_dict["compare-buggy-and-fixed-results"] = args.compare_buggy_and_fixed_results
     param_dict["folder"] = args.folder
-    param_dict["hash"] = args.hash
+    param_dict["bug-ID"] = args.bug_ID
     param_dict["repo"] = args.repo
     param_dict["test-command"] = args.test_command
-    param_dict["include"] = args.include
-    param_dict["patchFolder"] = args.patchFolder
 
     return param_dict
 
@@ -224,13 +212,11 @@ def get_info_arguments():
 
     parser.add_argument('-b',   '--bug-ID',         required = True, help = 'bug ID')
     parser.add_argument('-r',   '--repo',           required = True, help = 'project repo')
-    parser.add_argument('-H',   '--hash',           required = True, help = 'fix hash')
 
     param_dict = {}
     args = parser.parse_args()
     param_dict["info"] = args.info
     param_dict["bug-ID"] = args.bug_ID
-    param_dict["hash"] = args.hash
     param_dict["repo"] = args.repo
 
     return param_dict

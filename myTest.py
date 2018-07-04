@@ -47,6 +47,6 @@ def get_test_stat_from_bad_json(json_name):
 
 def results_comapre(buggy_test_stat, fixed_test_stat):
     if buggy_test_stat["failures"] != fixed_test_stat["failures"]:
-        print("There is difference")
+        print("There is difference! Failures: "+str(buggy_test_stat["failures"])+" -> "+str(fixed_test_stat["failures"]))
     else:
         print("There isn't difference")
