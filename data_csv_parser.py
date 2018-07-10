@@ -60,7 +60,7 @@ def do_command(param_dict, cmd_param_dict):
               " -CC "+cmd_param_dict["coverage-command"]+\
               " -tF "+cmd_param_dict["test-folders"]
         if str(param_dict["per-test-coverage"]) == "True":
-            cmd += "--per-test-coverage"+\
+            cmd += " --per-test-coverage"+\
                    " -pC "+cmd_param_dict["pre-command"]
     elif param_dict["task"] in ["fR", "fixed-results"]:
         cmd = "-fR -r "+cmd_param_dict["repo"]+\
@@ -90,7 +90,7 @@ def do_command(param_dict, cmd_param_dict):
               " -tC "+cmd_param_dict["test-command"]
 
     elif param_dict["task"] in ["I", "info"]:
-        cmd = "-I -b "+str(cmd_param_dict["bug-ID"])+\
+        cmd = " -I -b "+str(cmd_param_dict["bug-ID"])+\
               " -r "+cmd_param_dict["repo"]
 
     return cmd
