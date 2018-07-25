@@ -1,2 +1,2 @@
-Bug ID;Project (git) repo;Checkout folder;Test command;Per-test coverage command;Test folders;Pre-command
-1;https://github.com/JSBenchmark/express;./1;node_modules/.bin/_mocha --require test/support/env --reporter json test/ test/acceptance/;istanbul cover --report json-summary node_modules/.bin/_mocha -- --require test/support/env --reporter json --check-leaks test/ test/acceptance/;test/ test/acceptance/;;
+Bug ID;Project (git) repo;Checkout folder;Test command;Per-test coverage command;Pre-command
+1;https://github.com/JSBenchmark/express;./1;node_modules/.bin/_mocha --require test/support/env --reporter json test/ test/acceptance/;istanbul cover --report json-summary node_modules/.bin/_mocha -- --require test/support/env --reporter json --check-leaks test/ test/acceptance/;;

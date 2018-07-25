@@ -32,7 +32,6 @@ def get_attributes_from_data_csv(line):
     cmd_param_dict["folder"] = line.split(";")[2]
     cmd_param_dict["test-command"] = "\""+line.split(";")[3]+"\""
     cmd_param_dict["coverage-command"] = "\""+line.split(";")[4]+"\""
-    cmd_param_dict["test-folders"] = "\""+line.split(";")[5]+"\""
     cmd_param_dict["pre-command"] = "\""+line.split(";")[6]+"\""
     return cmd_param_dict
 
@@ -57,8 +56,7 @@ def do_command(param_dict, cmd_param_dict):
               " -f "+cmd_param_dict["folder"]+\
               " -b "+cmd_param_dict["bug-ID"]+\
               " -tC "+cmd_param_dict["test-command"]+\
-              " -CC "+cmd_param_dict["coverage-command"]+\
-              " -tF "+cmd_param_dict["test-folders"]
+              " -CC "+cmd_param_dict["coverage-command"]
         if str(param_dict["per-test-coverage"]) == "True":
             cmd += " --per-test-coverage"+\
                    " -pC "+cmd_param_dict["pre-command"]
@@ -67,8 +65,7 @@ def do_command(param_dict, cmd_param_dict):
               " -f "+cmd_param_dict["folder"]+\
               " -b "+cmd_param_dict["bug-ID"]+\
               " -tC "+cmd_param_dict["test-command"]+\
-              " -CC "+cmd_param_dict["coverage-command"]+\
-              " -tF "+cmd_param_dict["test-folders"]
+              " -CC "+cmd_param_dict["coverage-command"]
         if str(param_dict["per-test-coverage"]) == "True":
             cmd += " --per-test-coverage "+\
                    " -pC "+cmd_param_dict["pre-command"]
@@ -76,7 +73,6 @@ def do_command(param_dict, cmd_param_dict):
         cmd = "-fOTCR -r "+cmd_param_dict["repo"]+\
               " -f "+cmd_param_dict["folder"]+\
               " -b "+cmd_param_dict["bug-ID"]+\
-              " -tF "+cmd_param_dict["test-folders"]+\
               " -tC "+cmd_param_dict["test-command"]+\
               " -CC "+cmd_param_dict["coverage-command"]
         if str(param_dict["per-test-coverage"]) == "True":

@@ -69,7 +69,7 @@ def test(param_dict):
     elif "fixed-only-test-change-results" in param_dict.keys():
         fixed_only_test_change_results(param_dict["repo"], param_dict["folder"], param_dict["bug-ID"], param_dict["test-command"])
 
-    myJS.test_run(param_dict["per-test-coverage"], param_dict["coverage-command"], param_dict["test-folders"], param_dict["pre-command"])
+    myJS.test_run(param_dict["per-test-coverage"], param_dict["coverage-command"], param_dict["test-command"], param_dict["pre-command"])
 
 
 def buggy_test_results(repo, folder, bug_ID, test_command):

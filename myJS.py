@@ -1,4 +1,5 @@
 import json
+import myTest
 import subprocess as sp
 
 
@@ -7,13 +8,8 @@ def npm_install():
     sp.call(install_cmd, shell=True)
 
 
-def get_tests(tests_folder):
-    test_cmd = "/work/tests.js "+str(tests_folder)+" > ./tests.json"
-    sp.call(test_cmd, shell=True)
-
-
-def test_run(per_test_coverage, coverage_command, tests_folder, pre_command):
-    get_tests(tests_folder)
+def test_run(per_test_coverage, coverage_command, test_command, pre_command):
+    myTest.get_test_names(test_command)
     if str(per_test_coverage) == "True":
         precommand_run(pre_command)
         perTest_run(coverage_command)
